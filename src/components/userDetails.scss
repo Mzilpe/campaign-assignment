@@ -1,0 +1,65 @@
+$table-bg: #f9f9f9;
+$header-bg: #007bff;
+$header-color: #ffffff;
+$row-even-bg: #ffffff;
+$row-odd-bg: #f2f2f2;
+$active-color: #28a745; // Green for active
+$inactive-color: #dc3545; // Red for inactive
+$circle-size: 10px; // Size of the status circle
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  thead {
+    background-color: $header-bg;
+
+    th {
+      color: $header-color;
+      font-weight: bold;
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: $row-even-bg;
+      }
+
+      &:nth-child(odd) {
+        background-color: $row-odd-bg;
+      }
+
+      &:hover {
+        background-color: lighten($row-odd-bg, 5%);
+      }
+    }
+
+    td {
+      position: relative;
+
+      .active, .inactive {
+        display: inline-block;
+        width: $circle-size;
+        height: $circle-size;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+
+      .active {
+        background-color: $active-color;
+      }
+
+      .inactive {
+        background-color: $inactive-color;
+      }
+    }
+  }
+}

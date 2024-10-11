@@ -1,23 +1,103 @@
-import logo from './logo.svg';
-import './App.css';
 
+import { useState } from 'react';
+import './App.scss';
+import { UserDetails } from './components/UserDetails.tsx';
+
+const datas = [
+  {
+      "id": 1,
+      "name": "Divavu",
+      "startDate": "9/19/2017",
+      "endDate": "3/9/2018",
+      "Budget": 88377,
+      "userId": 3
+  },
+  {
+      "id": 2,
+      "name": "Jaxspan",
+      "startDate": "11/21/2017",
+      "endDate": "2/21/2018",
+      "Budget": 608715,
+      "userId": 6
+  },
+  {
+      "id": 3,
+      "name": "Miboo",
+      "startDate": "11/1/2017",
+      "endDate": "6/20/2017",
+      "Budget": 239507,
+      "userId": 7
+  },
+  {
+      "id": 4,
+      "name": "Trilith",
+      "startDate": "8/25/2017",
+      "endDate": "11/30/2017",
+      "Budget": 179838,
+      "userId": 1
+  },
+  {
+      "id": 5,
+      "name": "Layo",
+      "startDate": "11/28/2017",
+      "endDate": "3/10/2018",
+      "Budget": 837850,
+      "userId": 9
+  },
+  {
+      "id": 6,
+      "name": "Photojam",
+      "startDate": "7/25/2017",
+      "endDate": "6/23/2025",
+      "Budget": 858131,
+      "userId": 3
+  },
+  {
+      "id": 7,
+      "name": "Blogtag",
+      "startDate": "6/27/2017",
+      "endDate": "1/15/2018",
+      "Budget": 109078,
+      "userId": 2
+  },
+  {
+      "id": 8,
+      "name": "Rhyzio",
+      "startDate": "10/13/2017",
+      "endDate": "1/25/2025",
+      "Budget": 272552,
+      "userId": 4
+  },
+  {
+      "id": 9,
+      "name": "Zoomcast",
+      "startDate": "9/6/2017",
+      "endDate": "11/10/2017",
+      "Budget": 301919,
+      "userId": 8
+  },
+  {
+      "id": 10,
+      "name": "Realbridge",
+      "startDate": "3/5/2018",
+      "endDate": "10/2/2026",
+      "Budget": 505602,
+      "userId": 5
+  }
+];
 function App() {
+
+  const [data, setData] = useState(datas);
+ 
+  function AddCampaigns(data) {
+    setData((prevState) => [...prevState, ...data]);
+  }
+  // Expose the function to the global scope
+  window.AddCampaigns = AddCampaigns;
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserDetails campaigns = {data} />
     </div>
   );
 }
